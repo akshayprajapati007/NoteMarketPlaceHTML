@@ -1,0 +1,219 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<head>
+    
+    <title>Member Details - Notes MarketPlace</title>
+
+</head>
+
+<body>
+    <section id="member-details">
+
+        <!-- MemberDetails Box -->
+        <div class="container">
+            <div class="content-box-lg with-bottom-border">
+                <p class="box-heading">Member Details</p>
+                <div class="row no-gutters member-details-wrapper">
+                    @{
+                        IPagedList<NoteMarketPlace.Models.MyProgressNotes> profileData = ViewBag.profile;
+                        int s = 0;
+
+                        foreach (var i in profileData)
+                        {
+                            ViewBag.fname = i.u.FirstName;
+                            ViewBag.lname = i.u.LastName;
+                            ViewBag.address1 = i.userprofile.AddressLine1;
+                            ViewBag.address2 = i.userprofile.AddressLine2;
+                            ViewBag.email = i.u.EmailID;
+                            ViewBag.dob = i.userprofile.DateOfBirth;
+                            ViewBag.phone = i.userprofile.PhoneNumber;
+                            ViewBag.dpPath = i.userprofile.ProfilePicture;
+                            ViewBag.college = i.userprofile.College;
+                            ViewBag.city = i.userprofile.City;
+                            ViewBag.state = i.userprofile.State;
+                            ViewBag.country = i.country.CountryName;
+                            ViewBag.zipcode = i.userprofile.ZipCode;
+                            ViewBag.university = i.userprofile.University;
+                        }
+                    }
+                    <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+                        <div class="member-photo">
+                            @if (ViewBag.dpPath != null)
+                            {
+                                <img src="@Url.Content(ViewBag.dpPath)" alt="">
+                            }
+                            else
+                            {
+                                <img src="~/Content/Admin/images/member-details/member.png" alt="">
+                            }
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                        <div class="row no-gutters">
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="member-personal-details-wrapper">
+                                    <div class="row no-gutters">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                            <div class="member-single-detail-left-wrapper">
+                                                <p class="member-single-detail-left">First Name: </p>
+                                                <p class="member-single-detail-left">Last Name:</p>
+                                                <p class="member-single-detail-left">Email:</p>
+                                                <p class="member-single-detail-left">DOB:</p>
+                                                <p class="member-single-detail-left">Phone Number:</p>
+                                                <p class="member-single-detail-left">College/University:</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                            <div class="member-single-detail-right-wrapper">
+                                                <p class="member-single-detail-right">@ViewBag.fname</p>
+                                                <p class="member-single-detail-right">@ViewBag.lname</p>
+                                                <p class="member-single-detail-right"> @ViewBag.email</p>
+                                                <p class="member-single-detail-right">@ViewBag.dob</p>
+                                                <p class="member-single-detail-right">@ViewBag.phone</p>
+                                                <p class="member-single-detail-right">@ViewBag.college , @ViewBag.university</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="member-address-wrapper">
+                                    <div class="row no-gutters">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                            <div class="member-single-detail-left-wrapper">
+                                                <p class="member-single-detail-left">Address 1:</p>
+                                                <p class="member-single-detail-left">Address 2:</p>
+                                                <p class="member-single-detail-left">City:</p>
+                                                <p class="member-single-detail-left">State:</p>
+                                                <p class="member-single-detail-left">Country:</p>
+                                                <p class="member-single-detail-left">Zip Code:</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                            <div class="member-single-detail-right-wrapper">
+                                                <p class="member-single-detail-right">@ViewBag.address1</p>
+                                                <p class="member-single-detail-right"> @ViewBag.address2</p>
+                                                <p class="member-single-detail-right"> @ViewBag.city</p>
+                                                <p class="member-single-detail-right">@ViewBag.state</p>
+                                                <p class="member-single-detail-right">@ViewBag.country</p>
+                                                <p class="member-single-detail-right">@ViewBag.zipcode</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- MemberDetails Box Ends -->
+        <!-- MemberNotes Box -->
+        <div class="content-box-lg">
+
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-left">
+                        <p class="box-heading">Notes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div class="member-notes-table general-table-responsive">
+                    <div class="table-responsive-xl">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">sr no.</th>
+                                    <th scope="col">Note Title</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col" class="text-center">Downloaded Notes</th>
+                                    <th scope="col" class="text-center">Total Earnings</th>
+                                    <th scope="col">Date Added</th>
+                                    <th scope="col">Published Date</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.profileCount > 0)
+                                {
+                                    foreach (var i in profileData)
+                                    {
+                                        s++;
+                                        <tr>
+                                            <td class="text-center">@s</td>
+                                            <td class="purple-td"><a style="color:#6255a5; text-decoration:none" href="/User/noteDetails/@i.SellerNotes.NoteID">@i.SellerNotes.NoteTitle</a></td>
+                                            <td>@i.Category.CategoryName</td>
+                                            <td>@i.status.Status</td>
+                                            <td class="text-center">@i.SellerNotes.DownloadNotes.Where(x=>x.SellerID == i.u.UserID && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null).Count()</td>
+                                            <td class="text-center">$@i.SellerNotes.DownloadNotes.Where(x => x.SellerID == i.u.UserID && x.IsSellerHasAllowedDownload == true && x.AttachmentPath != null).Select(x=>x.PurchasePrice).Sum()</td>
+                                            <td>@i.SellerNotes.CreatedDate</td>
+                                            <td>@i.SellerNotes.PublishedDate</td>
+                                            <td class="text-center visible-overflow-for-dropdown">
+                                                <div class="dropdown dropdown-dots-table">
+                                                    <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <img class="dots-in-table" src="~/Content/Admin/images/Dashboard/dots.png" alt="edit">
+                                                    </a>
+
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                        <a class="dropdown-item" href="/Admin/adminDownloadNote/@i.SellerNotes.NoteID">Download Notes</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="9">
+                                            <center>
+                                                No Record Found!
+                                            </center>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- MemberNotes Box Ends -->
+        <!-- Pagination -->
+        <div class="pagination-section">
+            <div class="pagination-notes">
+                <div class="pagination-number">
+                    @Html.PagedListPager(profileData, page => Url.Action("memberDetails", new
+               {
+                   page,
+                   // SortOrder = Request.QueryString["SortOrder"]
+               })
+           , new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, MaximumPageNumbersToDisplay = 5 }
+           )
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        
+    </section>
+
+</body>

@@ -1,0 +1,87 @@
+﻿@model NoteMarketPlace.Models.Users
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Important Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Title -->
+    <title>Forgot Password - Notes MarketPlace</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/User/images/logo/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="~/Content/User/css/bootstrap/bootstrap.min.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="~/Content/User/css/style.css">
+
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="~/Content/User/css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- Background Image -->
+    <img class="library-img" src="~/Content/User/images/login/banner-with-overlay.jpg" alt="Library">
+
+    <!-- Forgot -->
+    <section id="forgot">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div class="main-logo">
+                        <a href="~/Views/User/home.cshtml"><img class="img-fluid" src="~/Content/User/images/login/top-logo.png" alt="Notes MarketPlace Logo"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="forgot-box">
+                        <p class="section-heading text-center">Forgot Password?</p>
+                        <p class="user-instruction">Enter your email to reset your password</p>
+                        <form action="forgot" method="post">
+                            <div class="form-group">
+                                <label class="info-label" for="forgot-email">Email</label>
+                                @Html.TextBoxFor(UsersModel => UsersModel.EmailID, new { @class = "form-control input-box-style", id = "forgot-email", placeholder = "Enter your email address" })
+                            <div class="incorrect-password-label">
+                                <p>
+                                    @Html.ValidationMessage("EmailID", new { style = "color:red" })
+                                </p>
+                            </div>
+                            </div>
+                            <div class="form-btn">
+                                <button type="submit" class="btn btn-general btn-purple" onclick="SendEmail()">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+
+    <!-- JQuery -->
+    <script src="~/Scripts/User/js/jquery.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="~/Scripts/User/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="~/Scripts/User/js/script.js"></script>
+
+
+</body>
+
+</html>

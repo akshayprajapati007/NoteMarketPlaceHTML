@@ -1,0 +1,77 @@
+﻿@model NoteMarketPlace.Models.NoteCategories
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<head>
+
+
+    <!-- Title -->
+    <title>Add Category - Notes MarketPlace</title>
+
+
+</head>
+
+<body>
+
+    <section id="add-category" class="admin-add-page">
+
+        <!-- AddCategory Box -->
+        <div class="general-box">
+            <div class="content-box-lg">
+                <div class="container">
+                    <div class="row">
+                        <p class="section-heading">Add Category</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="success-msg">
+                            @Html.Raw(@ViewBag.categorySuccess)
+                        </div>
+
+                        <form method="post">
+                            <div class="row">
+
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="ac-catname">Category Name *</label>
+                                        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control input-box-style", id = "ac-catname", placeholder = "Enter your category" })
+                                        <div class="incorrect-password-label">
+                                            <p>
+                                                @Html.ValidationMessage("CategoryName", new { style = "color:red" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="category-description">Description *</label>
+                                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control input-box-style", @id = "category-description", @placeholder = "Enter your description...", style = "resize: none;" })
+                                        <div class="incorrect-password-label">
+                                            <p>
+                                                @Html.ValidationMessage("Description", new { @style = "color:red" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-btn">
+                                        <button type="submit" class="btn btn-general btn-purple">Submit</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- AddCategory Box Ends -->
+
+    </section>
+
+</body>

@@ -1,0 +1,112 @@
+﻿@model NoteMarketPlace.Models.SystemConfigurations
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<head>
+
+    <!-- Title -->
+    <title>Manage System Configuration - Notes MarketPlace</title>
+
+</head>
+
+<body>
+
+    <section id="manage-system-configuration" class="admin-add-page">
+
+        <!-- MSC Box -->
+        <div class="general-box">
+            <div class="content-box-lg">
+                <div class="container">
+                    <div class="row">
+                        <p class="section-heading">Manage System Configuration</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-semail">Support email address *</label>
+                                        @Html.TextBoxFor(x => x.Value, new { @class = "form-control input-box-style", id = "msc-semail", placeholder = "Enter support email address" })
+                                        <div class="incorrect-password-label">
+                                            <p>
+                                                @Html.ValidationMessage("Value", new { style = "color:red" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-spnumber">Support phone number *</label>
+                                        @Html.TextBoxFor(x => x.Value, new { type = "tel", @class = "form-control input-box-style", id = "msc-pnumber", placeholder = "Enter support first name" })
+                                        <div class="incorrect-password-label">
+                                            <p>
+                                                @Html.ValidationMessage("Value", new { style = "color:red" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-emails">Email Address(es) (for various events system will send notifications to these users) *</label>
+                                        @Html.TextBoxFor(x => x.Value, new { @class = "form-control input-box-style", id = "msc-emails", placeholder = "Enter email address" })
+                                        <div class="incorrect-password-label">
+                                            <p>
+                                                @Html.ValidationMessage("Value", new { style = "color:red" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-fb">Facebook URL</label>
+                                        @Html.TextBoxFor(x => x.Value, new { @class = "form-control input-box-style", id = "msc-fb", placeholder = "Enter facebook url" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-twitter">Twitter URL</label>
+                                        <input type="text" class="form-control input-box-style" id="msc-twitter" aria-describedby="emailHelp" placeholder="Enter twitter url">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-linkedin">Linkedin URL</label>
+                                        @Html.TextBoxFor(x => x.Value, new { @class = "form-control input-box-style", id = "msc-linkedin", placeholder = "Enter linkedin url" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-defaultnoteimg">Default image for notes (if seller do not upload)</label>
+                                        <div id="msc-defaultnoteimg" class="form-control input-box-style upload-input-box" onClick="document.getElementById('msc-notepicture').click()" style="cursor: pointer;">
+                                            <img src="~/Content/Admin/images/user-profile/upload.png" alt="Upload Picture">
+                                            <p>Upload a picture</p>
+                                        </div>
+                                        @Html.TextBoxFor(x => x.Value, new { type = "file", @class = "form-control", id = "msc-notepicture", name = "msc-notepicture", style = "display: none;" })
+                                        <input type="file" style="display: none;" class="form-control" id="msc-notepicture" name="msc-notepicture">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="msc-msc-defaultprofileimg">Default profile picture (if seller do not upload)</label>
+                                        <div id="" class="form-control input-box-style upload-input-box" onClick="document.getElementById('msc-picture').click()" style="cursor: pointer;">
+                                            <img src="~/Content/Admin/images/user-profile/upload.png" alt="Upload Picture">
+                                            <p>Upload a picture</p>
+                                        </div>
+                                        @Html.TextBoxFor(x => x.Value, new { type = "file", @class = "form-control", id = "msc-picture", name = "msc-picture", style = "display: none;" })
+                                    </div>
+
+                                    <div class="form-btn">
+                                        <button type="submit" class="btn btn-general btn-purple">Submit</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MSC Box Ends -->
+
+    </section>
+
+</body>

@@ -1,0 +1,76 @@
+﻿@model NoteMarketPlace.Models.Countries
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<head>
+
+    <!-- Title -->
+    <title>Add Country - Notes MarketPlace</title>
+
+
+</head>
+
+<body>
+
+    <section id="add-country" class="admin-add-page">
+
+        <!-- AddCountry Box -->
+        <div class="general-box">
+            <div class="content-box-lg">
+                <div class="container">
+                    <div class="row">
+                        <p class="section-heading">Add Country</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="success-msg">
+                            @Html.Raw(@ViewBag.countrySuccess)
+                        </div>
+
+                        <form method="post">
+                            <div class="row">
+
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="ac-cnname">Country Name *</label>
+                                        @Html.TextBoxFor(x => x.CountryName, new { @class = "form-control input-box-style", id = "ac-cnname", placeholder = "Enter country name" })
+                                        <div class="incorrect-password-label">
+                                            <p>
+                                                @Html.ValidationMessage("CountryName", new { style = "color:red" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="info-label" for="ac-ccode">Country Code *</label>
+                                        @Html.TextBoxFor(x => x.CountryCode, new { @class = "form-control input-box-style", id = "ac-ccode", placeholder = "Enter country code" })
+                                        <div class="incorrect-password-label">
+                                            <p>
+                                                @Html.ValidationMessage("CountryCode", new { style = "color:red" })
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-btn">
+                                        <button type="submit" class="btn btn-general btn-purple">Submit</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- AddCountry Box Ends -->
+
+    </section>
+
+</body>
